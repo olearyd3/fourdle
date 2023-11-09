@@ -128,8 +128,9 @@ function checkGuess() {
   }
 
   if (guessString === rightGuessString) {
-    toastr.success("You guessed right! Game over!");
+    console.log("You guessed right! Play again?");
     guessesRemaining = 0;
+    displayWinningModal(rightGuessString);
     return;
   } else {
     guessesRemaining -= 1;
@@ -137,10 +138,41 @@ function checkGuess() {
     nextLetter = 0;
 
     if (guessesRemaining === 0) {
-      toastr.error("You've run out of guesses! Game over!");
-      toastr.info(`The right word was: "${rightGuessString}"`);
+      console.log("You've run out of guesses! Game over!");
+      console.log(`The correct answer was: "${rightGuessString}"`);
+      displayLosingModal(rightGuessString);
     }
   }
+}
+
+function displayWinningModal(correctAnswer) {
+  const winningModal = document.getElementById("winningModal");
+  const winningModalContent = document.querySelector(
+    "#winningModal .modal-content p",
+  );
+  document.getElementById("btnYes").addEventListener("click", () => {
+    location.reload();
+  });
+  document.getElementById("btnNo").addEventListener("click", () => {
+    winningModal.style.display = "none";
+  });
+  winningModalContent.textContent = `"You guessed right! The word was: "${correctAnswer}"! Do you want to play again?`;
+  winningModal.style.display = "block";
+}
+
+function displayLosingModal(correctAnswer) {
+  const losingModal = document.getElementById("losingModal");
+  const losingModalContent = document.querySelector(
+    "#losingModal .modal-content p",
+  );
+  document.getElementById("losebtnYes").addEventListener("click", () => {
+    location.reload();
+  });
+  document.getElementById("losebtnNo").addEventListener("click", () => {
+    losingModal.style.display = "none";
+  });
+  losingModalContent.textContent = `The word was: "${correctAnswer}" Do you want to play again?`;
+  losingModal.style.display = "block";
 }
 
 function shadeKeyBoard(letter, color) {

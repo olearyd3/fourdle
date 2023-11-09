@@ -1,11 +1,11 @@
 body {
-    font-family:'Clear Sans', 'Helvetica Neue';
-    background-color: #333333;
+  font-family: "Clear Sans", "Helvetica Neue";
+  background-color: #333333;
 }
 
 h1 {
   text-align: center;
-  color: #CCCCCC
+  color: #cccccc;
 }
 
 #game-board {
@@ -25,6 +25,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #cccccc;
   text-transform: uppercase;
 }
 
@@ -66,5 +67,38 @@ h1 {
   cursor: pointer;
   text-transform: uppercase;
   background-color: #222222;
-  color: #CCCCCC;
+  color: #cccccc;
+}
+
+.winningModel,
+.losingModel {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333333;
+  color: #cccccc;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: #333333;
+  color: #cccccc;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+}
+
+#btnYes,
+#btnNo,
+#losebtnYes,
+#losebtnNo {
+  margin: 10px;
+  background-color: #222222;
+  color: #cccccc;
 }
